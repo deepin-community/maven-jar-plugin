@@ -25,12 +25,12 @@
   <parent>
     <artifactId>maven-plugins</artifactId>
     <groupId>org.apache.maven.plugins</groupId>
-    <version>33</version>
-    <relativePath>../../pom/maven/maven-plugins/pom.xml</relativePath>
+    <version>37</version>
+    <relativePath />
   </parent>
 
   <artifactId>maven-jar-plugin</artifactId>
-  <version>3.1.2</version>
+  <version>3.3.0</version>
   <packaging>maven-plugin</packaging>
 
   <name>Apache Maven JAR Plugin</name>
@@ -57,7 +57,7 @@
     <connection>scm:git:https://gitbox.apache.org/repos/asf/maven-jar-plugin.git</connection>
     <developerConnection>scm:git:https://gitbox.apache.org/repos/asf/maven-jar-plugin.git</developerConnection>
     <url>https://github.com/apache/maven-jar-plugin/tree/${project.scm.tag}</url>
-    <tag>maven-jar-plugin-3.1.2</tag>
+    <tag>maven-jar-plugin-3.3.0</tag>
   </scm>
   <issueManagement>
     <system>JIRA</system>
@@ -65,7 +65,7 @@
   </issueManagement>
   <ciManagement>
     <system>Jenkins</system>
-    <url>https://builds.apache.org/job/maven-box/job/maven-jar-plugin/</url>
+    <url>https://ci-maven.apache.org/job/Maven/job/maven-box/job/maven-jar-plugin/</url>
   </ciManagement>
   <distributionManagement>
     <site>
@@ -75,10 +75,10 @@
   </distributionManagement>
 
   <properties>
-    <mavenFileManagementVersion>3.0.0</mavenFileManagementVersion>
-    <mavenArchiverVersion>3.4.0</mavenArchiverVersion>
-    <mavenVersion>3.0</mavenVersion>
-    <javaVersion>7</javaVersion>
+    <javaVersion>8</javaVersion>
+    <mavenVersion>3.2.5</mavenVersion>
+    <mavenArchiverVersion>3.6.0</mavenArchiverVersion>
+    <project.build.outputTimestamp>2022-09-12T15:53:02Z</project.build.outputTimestamp>
   </properties>
 
   <dependencies>
@@ -86,26 +86,40 @@
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-plugin-api</artifactId>
       <version>${mavenVersion}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-core</artifactId>
       <version>${mavenVersion}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-artifact</artifactId>
       <version>${mavenVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-model</artifactId>
+      <version>${mavenVersion}</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven.shared</groupId>
       <artifactId>file-management</artifactId>
-      <version>${mavenFileManagementVersion}</version>
+      <version>3.1.0</version>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-archiver</artifactId>
       <version>${mavenArchiverVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.codehaus.plexus</groupId>
+      <artifactId>plexus-utils</artifactId>
+      <version>3.4.2</version>
     </dependency>
     <!-- dependencies to annotations -->
     <dependency>
@@ -113,49 +127,24 @@
       <artifactId>maven-plugin-annotations</artifactId>
       <scope>provided</scope>
     </dependency>
-    <!--
-      ! other dependencies contain references to older versions
-      ! so we define it here explicit to make sure we get the
-      ! correct version for plexus-archiver and plexus-utils.
-    -->
-    <!--
-     ! maven-shared-utils is pulled by file-management
-     ! Need to use a more recent version otherwise
-     ! the build will fail. This needed to be kept
-     ! here until a new version of file-management
-     ! has been made. 
-    -->
-    <dependency>
-      <groupId>org.apache.maven.shared</groupId>
-      <artifactId>maven-shared-utils</artifactId>
-      <version>3.2.1</version>
-    </dependency>
-    <dependency>
-      <groupId>org.codehaus.plexus</groupId>
-      <artifactId>plexus-archiver</artifactId>
-      <version>4.1.0</version>
-    </dependency>
-		<dependency>
-			<groupId>org.codehaus.plexus</groupId>
-			<artifactId>plexus-utils</artifactId>
-			<version>3.2.0</version>
-		</dependency>
+
+    <!-- Test -->
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.12</version>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.maven.plugin-testing</groupId>
+      <artifactId>maven-plugin-testing-harness</artifactId>
+      <version>3.3.0</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.apache.maven</groupId>
       <artifactId>maven-compat</artifactId>
       <version>${mavenVersion}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.maven.plugin-testing</groupId>
-      <artifactId>maven-plugin-testing-harness</artifactId>
-      <version>2.1</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -199,7 +188,6 @@
                 <goal>clean</goal>
                 <goal>package</goal>
               </goals>
-              <streamLogs>true</streamLogs>
               <showErrors>true</showErrors>
             </configuration>
             <executions>

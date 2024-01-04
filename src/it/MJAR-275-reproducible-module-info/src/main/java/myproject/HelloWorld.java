@@ -1,4 +1,4 @@
-package org.apache.maven.plugins.jar;
+package myproject;
 
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
@@ -19,34 +19,19 @@ package org.apache.maven.plugins.jar;
  * under the License.
  */
 
-import java.io.File;
-
-import org.apache.maven.plugin.testing.AbstractMojoTestCase;
-import org.apache.maven.plugins.jar.JarMojo;
-
 /**
- * Test for {@link JarMojo}
- *
- * @version $Id$
+ * The classic Hello World App.
  */
-public class JarMojoTest
-    extends AbstractMojoTestCase
+public class HelloWorld
 {
-    private File testPom = new File( getBasedir(), "src/test/resources/unit/jar-basic-test/pom.xml" );
 
     /**
-     * Tests the discovery and configuration of the mojo.
+     * Main method.
      *
-     * @throws Exception in case of an error
+     * @param args Not used
      */
-    public void testJarTestEnvironment()
-        throws Exception
+    public static void main( String[] args )
     {
-        JarMojo mojo = (JarMojo) lookupMojo( "jar", testPom );
-
-        assertNotNull( mojo );
-
-        assertEquals( "foo", mojo.getProject().getGroupId() );
+        System.out.println( "Hi!" );
     }
-
 }

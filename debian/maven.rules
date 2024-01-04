@@ -16,12 +16,11 @@
 # and version starting with 3., replacing the version with 3.x
 #   junit junit jar s/3\..*/3.x/
 
-s/org.apache.maven.shared/org.apache.maven.plugin-testing/ maven-plugin-testing * s/.*/debian/ * *
-s/org.apache.maven.shared/org.apache.maven.plugin-testing/ maven-plugin-testing-harness * s/.*/debian/ * *
-s/org.apache.maven.shared/org.apache.maven.plugin-testing/ maven-test-tools * s/.*/debian/ * *
 junit junit jar s/.*/4.x/
 
 org.apache.maven maven-artifact   * s/.*/3.x/ * *
 org.apache.maven maven-compat     * s/.*/3.x/ * *
 org.apache.maven maven-core       * s/.*/3.x/ * *
+org.apache.maven maven-model      * s/.*/3.x/ * *
 org.apache.maven maven-plugin-api * s/.*/3.x/ * *
+org.apache.maven.plugins maven-plugins pom s/.*/debian/ * *

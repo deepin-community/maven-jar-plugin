@@ -91,7 +91,6 @@ How to create a jar containing test classes
   <<<artifactId-version-classifier.jar>>> for the second one. The parts <<<artifactId>>>, <<<versions>>>
   will be replaced by the values given within your project <<<pom.xml>>> file. The <<<classifier>>>
   will be set to <<<tests>>> which is a default of the maven-jar-plugin which can be changed if you need by
-  using the configuration in the jar goal
   {{{../test-jar-mojo.html}using the configuration in the jar goal}}.
 
   <<Note:>> The downside of this solution is that you don't get the transitive <<<test>>>-scoped dependencies automatically. 
@@ -114,7 +113,7 @@ How to create a jar containing test classes
      the original project to the <<<src/main/java>>> of this project.
      The same type of movement counts for the resources as well of course.
    
-   * Move the required <<<test>>>-scoped dependencies and from the original 
+   * Move the required <<<test>>>-scoped dependencies from the original 
      project to this project and remove the scope (i.e. changing it to the <<<compile>>>-scope).
      And yes, that means that the junit dependency (or any other testing 
      framework dependency) gets the default scope too. You'll probably need 
