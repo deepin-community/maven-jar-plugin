@@ -1,3 +1,24 @@
+maven-jar-plugin (3.3.0-2) unstable; urgency=medium
+
+  * Team upload.
+  * Depend on libmaven-parent-java (Closes: #1028875)
+  * Standards-Version updated to 4.6.2
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Sun, 15 Jan 2023 12:19:37 +0100
+
+maven-jar-plugin (3.3.0-1) unstable; urgency=medium
+
+  * Team upload.
+  * New upstream release
+    - Refreshed the patch
+    - Depend on libmaven-archiver-java (>= 3.6)
+    - Updated the Maven rules
+    - Relocate the previous version of the plugin (3.1.2) to the new one
+  * Standards-Version updated to 4.6.1
+  * Switch to debhelper level 13
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Wed, 12 Oct 2022 21:58:01 +0200
+
 maven-jar-plugin (3.1.2-1) unstable; urgency=medium
 
   * Team upload.
